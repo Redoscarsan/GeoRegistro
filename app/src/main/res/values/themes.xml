@@ -6,4 +6,17 @@
     </style>
 
     <style name="Theme.GeoRegistro" parent="Base.Theme.GeoRegistro" />
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <!-- Set the background color of your splash screen -->
+        <item name="windowSplashScreenBackground">@color/white</item>
+
+        <!-- Set your app icon (vector drawable or PNG) -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+
+        <!-- (Optional) Set an icon background if needed -->
+        <!-- <item name="windowSplashScreenIconBackground">@color/white</item> -->
+
+        <!-- Set the theme that your app will switch to once loaded -->
+        <item name="postSplashScreenTheme">@style/Theme.GeoRegistro</item>
+    </style>
 </resources>
