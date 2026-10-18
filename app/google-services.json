@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "367133514977",
+    "project_id": "georegistro-aa797",
+    "storage_bucket": "georegistro-aa797.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367133514977:android:13dac0bf5e067774616ba0",
+        "android_client_info": {
+          "package_name": "ipvg.virginio.GeoRegistro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDntecMwxGP-EYuiRU7CdNHRV1eAMLP9ds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

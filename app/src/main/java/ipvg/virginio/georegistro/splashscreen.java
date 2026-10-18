@@ -1,28 +1,20 @@
 package ipvg.virginio.georegistro;
 
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
 import androidx.core.splashscreen.SplashScreen;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class splashscreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.splash);
+        // 1. MUST be the very first line before super.onCreate()
+        // This handles the splash screen and automatically applies your postSplashScreenTheme
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.splash);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
 
-        });
+        super.onCreate(savedInstanceState);
+
+        // 2. Now safe to load your layout
+        setContentView(R.layout.activity_main); // Replace with your actual layout name
     }
 }

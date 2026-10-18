@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -33,6 +34,7 @@ android {
 }
 
 dependencies {
+    implementation(platform("com.google.firebase:firebase-bom:35.0.2"))
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation(libs.activity.ktx)
     implementation(libs.appcompat)
