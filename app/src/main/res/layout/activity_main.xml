@@ -133,7 +133,7 @@
             app:layout_constraintVertical_bias="0.894" />
 
         <Button
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_sensor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -142,16 +142,16 @@
             android:backgroundTint="#707787"
             android:drawableTint="#707787"
             android:foregroundTint="#707787"
-            android:text="Ver Registro"
+            android:text="Ver sensor"
             android:textSize="10sp"
             app:iconSize="10dp"
             app:iconTint="#707787"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.974"
+            app:layout_constraintHorizontal_bias="0.882"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.953" />
+            app:layout_constraintVertical_bias="0.95" />
 
         <Button
             android:id="@+id/btn_map"
@@ -159,9 +159,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="440dp"
+            android:layout_marginBottom="30dp"
             android:background="#707787"
             android:text="Ver Mapa"
-            android:textSize="14sp"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -291,4 +292,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

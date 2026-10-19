@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     Button save;
     Button register;
     Button map;
+    Button sensor;
     private FusedLocationProviderClient fusedLocationClient;
 
     @SuppressLint("MissingPermission")
@@ -71,12 +72,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void openMap(String lat, String lon){
-        String locationString = "Latitude: " + lat + "\nLongitude: " + lon;
-
-        Intent intent = new Intent(MainActivity.this, Map.class);
-        intent.putExtra("LOCATION_EXTRA", locationString);
-
+    public void openMap(String userLatitude, String userLongitude){
+        Intent intent = new Intent(MainActivity.this, Localization.class);
+        intent.putExtra("EXTRA_LATITUDE", userLatitude); // your fetched latitude variable
+        intent.putExtra("EXTRA_LONGITUDE", userLongitude); // your fetched longitude variable
         startActivity(intent);
     }
 
@@ -122,15 +121,19 @@ public class MainActivity extends AppCompatActivity {
         latitude = findViewById(R.id.txt_latitude);
         longitude = findViewById(R.id.txt_longitude);
         save = findViewById(R.id.btn_save);
-        register = findViewById(R.id.btn_register);
+        register = findViewById(R.id.btn_sensor);
         map = findViewById(R.id.btn_map);
+        sensor = findViewById(R.id.btn_sensor);
         warning = findViewById(R.id.warning);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             fetchCurrentLocation();
         }
-
+        sensor.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SensorsActivity.class);
+            startActivity(intent);
+        });
         save.setOnClickListener(v -> {
             Log.d("DebugButton", "Save button was clicked!");
 
@@ -199,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

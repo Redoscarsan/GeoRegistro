@@ -13,6 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GeoRegistro">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCyaQ29EGLfceFTRyOlJt51Pm_jLeyAbHk" />
+
         <activity
             android:name=".SplashScreen"
             android:exported="true"
@@ -28,9 +32,16 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".Map"
+            android:name=".Localization"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Sensors"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".SensorsActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
