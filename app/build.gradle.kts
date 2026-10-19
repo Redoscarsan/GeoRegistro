@@ -36,6 +36,7 @@ android {
 dependencies {
     implementation(platform("com.google.firebase:firebase-bom:35.0.2"))
     implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
     implementation(libs.activity.ktx)
     implementation(libs.appcompat)
     implementation(libs.constraintlayout)
