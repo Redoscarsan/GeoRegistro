@@ -1,0 +1,12 @@
+AI was heavily used in this project since the level of abstraction and third party functionalities is too high for a person to not use AI. Specifications are following:
+AI used: Gemini
+Sections used:
+	Layout design: NO (With the sole expection of activity_sensor.xml)
+	Terreno class: NO
+	MainActivity: PARTIALLY (Functions such as openMap() and Firebase implementation)
+	Rest of the activities: MOSTLY (With minor human changes)
+	Manifest, gradle and other setting files: PARTIALLY (to handle bug fixing, specially in the android manifest, AI was used)
+	Debug and bug fixing: MOSTLY (With syntax errors handled by human)
+	
+AI was used only when human knowledge wasnt enough, and the use of AI by the user is discriminate.
+
