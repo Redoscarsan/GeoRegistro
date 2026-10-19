@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "ipvg.virginio.georegistro"
+    namespace = "ipvg.virginio.GeoRegistro"
     compileSdk {
         version = release(37)
     }
 
     defaultConfig {
-        applicationId = "ipvg.virginio.georegistro"
+        applicationId = "ipvg.virginio.GeoRegistro"
         minSdk = 27
         targetSdk = 37
         versionCode = 1
@@ -39,6 +39,7 @@ dependencies {
     implementation(libs.activity.ktx)
     implementation(libs.appcompat)
     implementation(libs.constraintlayout)
+    implementation(libs.firebase.firestore)
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)

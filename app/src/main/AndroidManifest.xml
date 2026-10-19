@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GeoRegistro">
         <activity
-            android:name=".splashscreen"
+            android:name=".SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.App.Starting">
             <intent-filter>
@@ -24,5 +24,6 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>
+
 
 </manifest>

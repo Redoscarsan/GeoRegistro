@@ -1,4 +1,4 @@
-package ipvg.virginio.georegistro;
+package ipvg.virginio.GeoRegistro;
 
 import org.junit.Test;
 
