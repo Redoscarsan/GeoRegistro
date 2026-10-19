@@ -1,6 +1,11 @@
 package ipvg.virginio.GeoRegistro;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -9,7 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -19,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
     private List<Terreno> listaterrenos = new ArrayList<>();
     TextView warning;
     EditText title;
@@ -27,7 +36,37 @@ public class MainActivity extends AppCompatActivity {
     Button save;
     Button register;
     Button map;
+    public void openMap(){
+        String currentLatitude = "36.6062° S";
+        String currentLongitude = "72.1030° W";
+        String locationString = "Latitude: " + currentLatitude + "\nLongitude: " + currentLongitude;
 
+        Intent intent = new Intent(MainActivity.this, Map.class);
+        intent.putExtra("LOCATION_EXTRA", locationString);
+
+        startActivity(intent);
+    }
+    private final ActivityResultLauncher<String[]> locationPermissionRequest =
+            registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), result -> {
+                Boolean fineLocationGranted = result.getOrDefault(
+                        Manifest.permission.ACCESS_FINE_LOCATION, false);
+                Boolean coarseLocationGranted = result.getOrDefault(
+                        Manifest.permission.ACCESS_COARSE_LOCATION, false);
+
+                if (fineLocationGranted != null && fineLocationGranted) {
+                    openMap();
+
+                } else if (coarseLocationGranted != null && coarseLocationGranted) {
+                    new AlertDialog.Builder(MainActivity.this).setTitle("Acceso a la ubicacion")
+                            .setMessage("Ubicacion parcial activada.")
+                            .setPositiveButton("OK", (dialog, which) -> {dialog.dismiss();}).show();
+                    openMap();
+                } else {
+                    new AlertDialog.Builder(MainActivity.this).setTitle("Acceso a la ubicacion")
+                            .setMessage("Se requiere de permisos de localizacion para continuar.")
+                            .setPositiveButton("OK", (dialog, which) -> {dialog.dismiss();}).show();
+                }
+            });
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         register = (Button) findViewById(R.id.btn_register);
         map = (Button) findViewById(R.id.btn_map);
         warning = (TextView) findViewById(R.id.warning);
+
         save.setOnClickListener(v -> {
             Log.d("DebugButton", "Save button was clicked!");
 
@@ -78,6 +118,17 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                             Log.e("FirestoreError", "Error writing document", e);
                         });
+            }
+        });
+        map.setOnClickListener(v -> {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                    ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                openMap();
+            } else {
+                locationPermissionRequest.launch(new String[]{
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION
+                });
             }
         });
 
